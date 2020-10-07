@@ -2,9 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
+import * as api from "./api";
 
 export default function App() {
 	const [errorMessage, setErrorMessage] = useState(null);
+	const [currentWeather, setCurrentWeather] = useState(null);
 
 	useEffect(() => {
 		load();
@@ -21,7 +23,6 @@ export default function App() {
 
 			const location = await Location.getCurrentPositionAsync();
 			const { latitude, longitude } = location.coords;
-			alert(`${latitude} ${longitude}!!`);
 		} catch (error) {}
 	}
 
