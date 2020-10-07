@@ -6,6 +6,7 @@ import * as api from "./api";
 import WeatherInfo from "./components/WeatherInfo";
 import UnitsPicker from "./components/UnitsPicker";
 import Reload from "./components/Reload";
+import WeatherDetails from "./components/WeatherDetails";
 
 export default function App() {
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -56,12 +57,13 @@ export default function App() {
 					<Reload load={load} />
 					<WeatherInfo currentWeather={currentWeather} />
 				</View>
+				<WeatherDetails currentWeather={currentWeather} />
 			</View>
 		);
 	} else if (errorMessage) {
 		return (
 			<View style={styles.container}>
-				<Text>oop: {errorMessage}</Text>
+				<Text>Oops: {errorMessage}</Text>
 				<StatusBar style="auto" />
 			</View>
 		);
