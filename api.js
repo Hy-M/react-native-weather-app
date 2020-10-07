@@ -6,7 +6,7 @@ const getCurrentWeather = (lat, lon, unitsSystem) => {
 
 	return fetch(weatherURL)
 		.then(response => response.json())
-		.catch(err => console.log(err, "err in getCurrentWeather"));
+		.catch(err => err);
 };
 
 module.exports = {

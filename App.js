@@ -37,7 +37,7 @@ export default function App() {
 				unitsSystem
 			);
 
-			if (currentWeatherResult) {
+			if (currentWeatherResult.weather) {
 				setCurrentWeather(currentWeatherResult);
 			} else setErrorMessage(currentWeatherResult.message);
 		} catch (error) {
@@ -57,13 +57,17 @@ export default function App() {
 					<Reload load={load} />
 					<WeatherInfo currentWeather={currentWeather} />
 				</View>
-				<WeatherDetails currentWeather={currentWeather} />
+				<WeatherDetails
+					currentWeather={currentWeather}
+					unitsSystem={unitsSystem}
+				/>
 			</View>
 		);
 	} else if (errorMessage) {
 		return (
 			<View style={styles.container}>
-				<Text>Oops: {errorMessage}</Text>
+				<Text style={{ textAlign: "center" }}>Oops: {errorMessage}</Text>
+				<Reload load={load} />
 				<StatusBar style="auto" />
 			</View>
 		);
