@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
 import * as api from "./api";
 import WeatherInfo from "./components/WeatherInfo";
+import UnitsPicker from "./components/UnitsPicker";
 
 export default function App() {
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -45,6 +46,10 @@ export default function App() {
 			<View style={styles.container}>
 				<StatusBar style="auto" />
 				<View style={styles.main}>
+					<UnitsPicker
+						unitsSystem={unitsSystem}
+						setUnitsSystem={setUnitsSystem}
+					/>
 					<WeatherInfo currentWeather={currentWeather} />
 				</View>
 			</View>
