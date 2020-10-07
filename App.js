@@ -13,9 +13,10 @@ export default function App() {
 
 	useEffect(() => {
 		load();
-	}, []);
+	}, [unitsSystem]);
 
 	async function load() {
+		setCurrentWeather(null);
 		try {
 			let { status } = await Location.requestPermissionsAsync();
 
