@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import * as Location from "expo-location";
 import * as api from "./api";
 import WeatherInfo from "./components/WeatherInfo";
@@ -17,6 +17,7 @@ export default function App() {
 
 	async function load() {
 		setCurrentWeather(null);
+		setErrorMessage(null);
 		try {
 			let { status } = await Location.requestPermissionsAsync();
 
@@ -55,10 +56,22 @@ export default function App() {
 				</View>
 			</View>
 		);
-	} else {
+	} else if (errorMessage) {
 		return (
 			<View style={styles.container}>
 				<Text>oop: {errorMessage}</Text>
+				<StatusBar style="auto" />
+			</View>
+		);
+	} else {
+		return (
+			<View style={styles.loaderContainer}>
+				<Image
+					style={styles.loaderImage}
+					source={{
+						uri: "https://media.giphy.com/media/QRhtqYeEywJI4/source.gif"
+					}}
+				/>
 				<StatusBar style="auto" />
 			</View>
 		);
@@ -68,11 +81,20 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "lightblue",
+		backgroundColor: "#02a8e0",
 		justifyContent: "center"
 	},
 	main: {
 		justifyContent: "center",
 		flex: 1
+	},
+	loaderContainer: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center"
+	},
+	loaderImage: {
+		height: 150,
+		width: 150
 	}
 });
