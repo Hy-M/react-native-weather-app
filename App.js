@@ -5,6 +5,7 @@ import * as Location from "expo-location";
 import * as api from "./api";
 import WeatherInfo from "./components/WeatherInfo";
 import UnitsPicker from "./components/UnitsPicker";
+import Reload from "./components/Reload";
 
 export default function App() {
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -52,6 +53,7 @@ export default function App() {
 						unitsSystem={unitsSystem}
 						setUnitsSystem={setUnitsSystem}
 					/>
+					<Reload load={load} />
 					<WeatherInfo currentWeather={currentWeather} />
 				</View>
 			</View>

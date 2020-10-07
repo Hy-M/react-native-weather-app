@@ -8,7 +8,7 @@ export default function UnitsPicker({ unitsSystem, setUnitsSystem }) {
 			<Picker
 				selectedValue={unitsSystem}
 				onValueChange={item => setUnitsSystem(item)}
-				itemStyle={{ fontSize: 16, color: "white" }}
+				itemStyle={{ fontSize: 18, color: "white" }}
 			>
 				<Picker.Item label="°C" value="metric" />
 				<Picker.Item label="°F" value="imperial" />
