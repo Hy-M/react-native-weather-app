@@ -15,7 +15,7 @@ export default function WeatherInfo({ currentWeather }) {
 	return (
 		<View style={styles.weatherInfo}>
 			<Text style={styles.weatherLocation}>{name}</Text>
-			<Text style={styles.textPrimary}>{temp}°C</Text>
+			<Text style={styles.textPrimary}>{Math.round(temp)}°</Text>
 			<Image style={styles.weatherIcon} source={{ uri: iconURL }} />
 			<Text style={styles.textSecondary}>{main}</Text>
 			<Text style={styles.textTertiary}>{description}</Text>

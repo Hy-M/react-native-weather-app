@@ -13,7 +13,7 @@ export default function Reload({ load }) {
 const styles = StyleSheet.create({
 	reloadIcon: {
 		position: "absolute",
-		top: 95,
+		top: 55,
 		right: 45
 	}
 });
