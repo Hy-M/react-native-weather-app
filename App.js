@@ -23,15 +23,38 @@ export default function App() {
 
 			const location = await Location.getCurrentPositionAsync();
 			const { latitude, longitude } = location.coords;
+
+			const currentWeatherResult = await api.getCurrentWeather(
+				latitude,
+				longitude
+			);
+
+			console.log(currentWeatherResult, "<<< currentWeatherResult!");
+
+			if (currentWeatherResult) {
+				setCurrentWeather(currentWeatherResult);
+			} else setErrorMessage(currentWeatherResult.message);
 		} catch (error) {}
 	}
 
-	return (
-		<View style={styles.container}>
-			<Text>Hello world</Text>
-			<StatusBar style="auto" />
-		</View>
-	);
+	if (currentWeather) {
+		const {
+			main: { temp }
+		} = currentWeather;
+		return (
+			<View style={styles.container}>
+				<Text>Your current temp is: {temp}</Text>
+				<StatusBar style="auto" />
+			</View>
+		);
+	} else {
+		return (
+			<View style={styles.container}>
+				<Text>{errorMessage}</Text>
+				<StatusBar style="auto" />
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
