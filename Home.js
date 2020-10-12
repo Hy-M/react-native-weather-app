@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import * as Location from "expo-location";
 import * as api from "./api";
 import WeatherInfo from "./components/WeatherInfo";
@@ -8,7 +8,7 @@ import UnitsPicker from "./components/UnitsPicker";
 import Reload from "./components/Reload";
 import WeatherDetails from "./components/WeatherDetails";
 
-export default function Home() {
+export default function Home({ navigation }) {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [currentWeather, setCurrentWeather] = useState(null);
 	const [unitsSystem, setUnitsSystem] = useState("metric");
@@ -49,6 +49,7 @@ export default function Home() {
 		return (
 			<View style={styles.container}>
 				<StatusBar style="auto" />
+				<Button title="Drawer" onPress={() => navigation.toggleDrawer()} />
 				<View style={styles.main}>
 					<UnitsPicker
 						unitsSystem={unitsSystem}
