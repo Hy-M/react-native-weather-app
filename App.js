@@ -16,7 +16,17 @@ const SettingsStack = createStackNavigator();
 const HomeStackScreen = () => {
 	return (
 		<HomeStack.Navigator>
-			<HomeStack.Screen name="Local weather" component={Home} />
+			<HomeStack.Screen
+				name="Home"
+				component={Home}
+				options={{
+					title: "Local weather",
+					headerStyle: {
+						backgroundColor: "#02a8e0",
+					},
+					headerTintColor: "#fff",
+				}}
+			/>
 		</HomeStack.Navigator>
 	);
 };
@@ -32,7 +42,12 @@ const SettingsStackScreen = () => {
 export default function App() {
 	return (
 		<NavigationContainer>
-			<Tab.Navigator>
+			<Tab.Navigator
+				tabBarOptions={{
+					activeTintColor: "tomato",
+					inactiveTintColor: "gray",
+				}}
+			>
 				<Tab.Screen name="Local weather" component={HomeStackScreen} />
 				<Tab.Screen name="Settings" component={SettingsStackScreen} />
 			</Tab.Navigator>
